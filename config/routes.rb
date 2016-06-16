@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  resources :pickups
-  resources :listings
-  resources :users
+
+  namespace :api do
+    namespace :v1 do
+      resources :pickups
+      resources :listings
+      resources :donors
+      resources :recipients
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
