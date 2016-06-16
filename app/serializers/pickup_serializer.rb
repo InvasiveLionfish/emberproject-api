@@ -1,3 +1,3 @@
 class PickupSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :listing_id, :recipient_id
 end
