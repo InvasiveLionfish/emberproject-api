@@ -35,7 +35,7 @@ gem 'rack-cors'
 gem 'rails-api'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
-
+gem 'jwt'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
