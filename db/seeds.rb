@@ -6,13 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-donor = Donor.create(email: "bob@bob.com", name: "Bob's Burgers", address: "Ocean Avenue", description: "Meh", contact_info: "Linda")
+donor = User.create(email: "bob@bob.com", name: "Bob's Burgers", address: "Ocean Avenue", description: "Meh", phone_number: "999-999-9999", type: "Donor", password: "password")
 
-donor2 = Donor.create(email: "rob@rob.com", name: "Rob's Burgers", address: "Seaside Avenue", description: "Bleh", contact_info: "Tina")
+donor2 = User.create(email: "rob@rob.com", name: "Rob's Burgers", address: "Seaside Avenue", description: "Bleh", phone_number: "777-777-7777", type: "Donor", password: "password")
 
-recipient = Recipient.create(email: "archer@isis.com", name: "Archer", description: "Hate the KGB", contact_info: "Mother")
+recipient = User.create(email: "archer@isis.com", name: "Archer", description: "Hate the KGB", address: "NYC", phone_number: "666-666-6666", type: "Recipient", password: "password")
 
-recipient2 = Recipient.create(email: "mother@isis.com", name: "Mother", description: "Hate my son")
+recipient2 = User.create(email: "mother@isis.com", name: "Mother", description: "Hate my son", address: "ISIS", phone_number: "123-123-1233", type: "Recipient", password: "password")
 
 donor.listings << Listing.create(pickup_time: "21:00", description: "Pickup my food")
 
@@ -21,4 +21,3 @@ donor2.listings << Listing.create(pickup_time: "22:00", description: "Pickup all
 recipient.pickups << Pickup.create(recipient_id: 1, listing_id: 1)
 
 recipient2.pickups << Pickup.create(recipient_id: 2, listing_id: 2)
-

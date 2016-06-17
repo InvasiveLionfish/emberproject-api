@@ -1,4 +1,3 @@
-class Donor < ActiveRecord::Base
+class Donor < User
   has_many :listings
-  has_many :pickups, through: :listings
 end

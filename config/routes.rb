@@ -4,8 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :pickups
       resources :listings
-      resources :donors
-      resources :recipients
+      resources :users
     end
   end
 
