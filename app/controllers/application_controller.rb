@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
-  before_action :authenticate 
-  
+  before_action :authenticate
+
   def logged_in?
     !!current_user
   end
@@ -18,15 +18,13 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    render json: {error: "unauthorized"}, status: 404 
-      unless logged_in?
+    render json: {error: "unauthorized"}, status: 404 unless logged_in?
   end
 
   private
 
     def token
-      request.env["HTTP_AUTHORIZATION"].scan(/Bearer 
-        (.*)$/).flatten.last
+      request.env["HTTP_AUTHORIZATION"].scan(/Bearer (.*)$/).flatten.last
     end
 
     def auth
@@ -34,8 +32,6 @@ class ApplicationController < ActionController::Base
     end
 
     def auth_present?
-      !!request.env.fetch("HTTP_AUTHORIZATION", 
-        "").scan(/Bearer/).flatten.first
+      !!request.env.fetch("HTTP_AUTHORIZATION", "").scan(/Bearer/).flatten.first
     end
 end
-end 
