@@ -30,5 +30,6 @@ module Queuetracker
       :post, :delete, :put, :patch, :options, :head]
     end
    end
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
