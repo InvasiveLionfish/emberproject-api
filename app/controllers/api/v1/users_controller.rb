@@ -1,6 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
+      include ErrorSerializer
     skip_before_action :authenticate, only: [:create]
 
       def create
