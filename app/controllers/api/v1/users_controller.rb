@@ -2,12 +2,11 @@ module Api
   module V1
     class UsersController < ApplicationController
     skip_before_action :authenticate, only: [:create]
-    skip_before_filter :verify_authenticity_token
 
       def create
         user = User.new(user_params)
         if user.save
-          render json: {}, status: 200
+          render json: {data: {type: "users", user: {email: user.email, password: user.password}}}, status: 200
         else
           render json: ErrorSerializer.serialize(user.errors), status: 422
         end
