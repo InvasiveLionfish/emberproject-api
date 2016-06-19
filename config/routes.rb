@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   post '/login', to: "sessions#create"
-  
+  # post '/api/v1/users', to: "users#create"
+
   namespace :api do
     namespace :v1 do
       resources :pickups
