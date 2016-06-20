@@ -22,7 +22,7 @@ module Api
       private
 
       def user_params
-        ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:name, :email, :password, :description, :address, "phone-number", :type])
+        ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:description, "pickup-time"])
       end
 
     end
