@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   post '/login', to: "sessions#create"
-  # post '/api/v1/users', to: "users#create"
+
 
   namespace :api do
     namespace :v1 do
+      get '/users/me', to: "users#me"
       resources :pickups
       resources :listings
       resources :users
