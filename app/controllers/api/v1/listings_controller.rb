@@ -13,7 +13,10 @@ module Api
           current_user.listings << listing
           render json: listing
         else
-          render json: ErrorSerializer.serialize(listing.errors), status: 422
+          render json: {:errors=>
+           [{:detail=>"error",
+             :source=>{:pointer=>"user/err_type"}}
+           ]}, status: 404
         end
       end
 
