@@ -24,7 +24,6 @@ module Api
       def user_params
         ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:description, :email, :name, :password, :phone_number, :type, :address])
       end
-
     end
   end
 end
