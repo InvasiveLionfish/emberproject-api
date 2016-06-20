@@ -7,7 +7,6 @@ module Api
       end
 
       def create
-        binding.pry
         listing = Listing.new(listing_params)
         if listing.save
           current_user.listings << listing
