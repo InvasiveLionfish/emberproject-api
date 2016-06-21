@@ -4,7 +4,7 @@ module Api
       skip_before_action :authenticate
 
       def index
-        render json: Listing.includes(:donor, :pickup), include: ['donor', 'pickup']
+        render json: Listing.includes(:donor, :pickup, :recipient), include: ['donor', 'pickup', 'recipient']
       end
 
       def create
@@ -22,7 +22,11 @@ module Api
 
       def update
         listing = Listing.find(params[:id])
-        listing.pickup = Pickup.create(recipient: current_user)
+        if params[:data][:relationships][:pickup][:data]
+          listing.pickup = Pickup.create(recipient: current_user)
+        else
+          listing.pickup = nil
+        end
         if listing.save
           render json: listing
         end
@@ -30,7 +34,7 @@ module Api
 
       private
         def listing_params
-          ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:description, "pickup-time"])
+          ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:description, "pickup-time", :pickup])
         end
     end
   end
