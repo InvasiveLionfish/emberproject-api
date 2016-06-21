@@ -34,7 +34,7 @@ module Api
 
       private
         def listing_params
-          ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:description, "pickup-time", :pickup])
+          ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:description, "pickup-time"])
         end
     end
   end
