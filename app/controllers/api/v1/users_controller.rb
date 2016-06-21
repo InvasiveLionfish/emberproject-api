@@ -7,7 +7,6 @@ module Api
       def create
         user = User.new(user_params)
         if user.save
-          binding.pry
           NewUserEmail.notify_user(user).deliver_now
           render json: {data: {type: "users", user: {email: user.email, password: user.password}}}, status: 200
         else
